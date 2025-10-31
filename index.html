@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HSC-MVS Online Services</title>
+  <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1466778384310951'); // Замініть ID, якщо у вас інший
+fbq('track', 'PageView');
+</script>
+<noscript>
+  <img height="1" width="1" style="display:none"
+       src="https://www.facebook.com/tr?id=1466778384310951&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Meta Pixel Code -->
+
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .video-background {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      overflow: hidden;
+      z-index: -1;
+    }
+    .bg-video {
+      position: absolute;
+      top: 50%; left: 50%;
+      min-width: 100vw; min-height: 100vh;
+      width: auto; height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      opacity: 0.7; /* можна змінити прозорість */
+      pointer-events: none;
+    }
+    /* Можна додати легку затемнену підкладку для контенту */
+    .video-background::after {
+      content: "";
+      position: absolute;
+      left:0; top:0; right:0; bottom:0;
+      background: rgba(0,0,0,0.15);
+      z-index: 1;
+      pointer-events: none;
+    }
+    /* Щоб контент завжди був над відео */
+    body > *:not(.video-background) {
+      position: relative;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+      <div class="menu-overlay"></div>
+  <!-- Video Background -->
+  <div class="video-background">
+    <video
+      class="bg-video"
+      src="background.mp4"
+      autoplay
+      muted
+      loop
+      playsinline
+    ></video>
+  </div>
+
+  <!-- Header -->
+<header class="site-header">
+  <div class="container header-flex">
+<a href="#" class="logo header-logo">HSC-MVS Online Services</a>
+
+    <nav class="nav">
+      <ul>
+        <li><a href="#hero">Головна</a></li>
+        <li><a href="#benefits">Переваги</a></li>
+        <li><a href="#workflow">Як працюємо</a></li>
+        <li><a href="#reviews">Відгуки</a></li>
+      </ul>
+    </nav>
+    <a href="https://t.me/Volodymir_tsc" class="btn btn-telegram" target="_blank">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21.48 5.61 18.8 19.37c-.21.97-.77 1.21-1.56.76l-4.32-3.18-2.08 2c-.23.23-.42.42-.85.42l.31-4.4 8-7.22c.34-.3-.07-.47-.53-.17l-9.88 6.22-4.24-1.32c-.92-.29-.94-.92.19-1.37l16.6-6.41c.77-.28 1.44.18 1.2 1.36Z" fill=\"#2AABEE\"/></svg>
+      <span>Telegram</span>
+    </a>
+<a href="https://t.me/Volodymir_tsc" class="burger" aria-label="Наш Telegram" target="_blank">
+  <!-- Можно оставить три <span> для визуала “бургер”-иконки -->
+  <span></span><span></span><span></span>
+</a>
+
+  </div>
+  <nav class="mobile-nav">
+    <ul>
+      <li><a href="#hero">Головна</a></li>
+      <li><a href="#benefits">Переваги</a></li>
+      <li><a href="#workflow">Як працюємо</a></li>
+      <li><a href="#reviews">Відгуки</a></li>
+      <li><a href="https://t.me/Volodymir_tsc" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21.48 5.61 18.8 19.37c-.21.97-.77 1.21-1.56.76l-4.32-3.18-2.08 2c-.23.23-.42.42-.85.42l.31-4.4 8-7.22c.34-.3-.07-.47-.53-.17l-9.88 6.22-4.24-1.32c-.92-.29-.94-.92.19-1.37l16.6-6.41c.77-.28 1.44.18 1.2 1.36Z" fill=\"#2AABEE\"/></svg>
+        Telegram</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<div id="telegramModal" class="modal">
+  <div class="modal-content business">
+    <button class="modal-close">&times;</button>
+    <h2 class="modal-title">Зв'яжіться з нами в Telegram</h2>
+    <p class="modal-text">Ми відповімо максимально швидко!</p>
+    <button id="goTelegram" class="modal-button">Відкрити в Telegram</button>
+  </div>
+</div>
+
+
+
+  <section class="hero">
+    <div class="container">
+      <h1>Отримайте водійські права онлайн — швидко та без зайвих клопотів</h1>
+      <p>Ми пропонуємо легкий процес заміни прав або оформлення європейського зразка без передплати.</p>
+      <a href="https://t.me/Volodymir_tsc" class="btn btn-primary">Переглянути ціни в Telegram</a>
+    </div>
+  </section>
+
+<section class="cards-container">
+  <div class="card reveal" data-i="1">
+    <h3>Категорія A, A1</h3>
+    <ul>
+      <li data-i="1">Вносимо вас в базу</li>
+      <li data-i="2">Оплата при отримані</li>
+      <li data-i="3">Доставка по Україні</li>
+      <li data-i="4">Найкраща ціна</li>
+    </ul>
+  </div>
+
+  <div class="card reveal" data-i="2">
+    <h3>Категорія B, B1</h3>
+    <ul>
+      <li data-i="1">Вносимо вас в базу</li>
+      <li data-i="2">Оплата при отримані</li>
+      <li data-i="3">Доставка по Україні</li>
+      <li data-i="4">Найкраща ціна</li>
+    </ul>
+  </div>
+
+  <div class="card reveal" data-i="3">
+    <h3>Категорія C1, C</h3>
+    <ul>
+      <li data-i="1">Вносимо вас в базу</li>
+      <li data-i="2">Оплата при отримані</li>
+      <li data-i="3">Доставка по Україні</li>
+      <li data-i="4">Найкраща ціна</li>
+    </ul>
+  </div>
+
+  <div class="card reveal highlight" data-i="4">
+    <h3>Категорія D1, D</h3>
+    <ul>
+      <li data-i="1">Вносимо вас в базу</li>
+      <li data-i="2">Оплата при отримані</li>
+      <li data-i="3">Доставка по Україні</li>
+      <li data-i="4">Найкраща ціна</li>
+    </ul>
+  </div>
+
+  <div class="card reveal" data-i="5">
+    <h3>Категорія E</h3>
+    <ul>
+      <li data-i="1">Вносимо вас в базу</li>
+      <li data-i="2">Оплата при отримані</li>
+      <li data-i="3">Доставка по Україні</li>
+      <li data-i="4">Найкраща ціна</li>
+    </ul>
+  </div>
+
+  <div class="card reveal" data-i="6">
+    <h3>Відновлення прав</h3>
+    <ul>
+      <li data-i="1">Вносимо вас в базу</li>
+      <li data-i="2">Оплата при отримані</li>
+      <li data-i="3">Доставка по Україні</li>
+      <li data-i="4">Найкраща ціна</li>
+    </ul>
+  </div>
+</section>
+
+
+<section class="cards-container">
+  <!-- 1. Benefits -->
+  <div class="card reveal">
+    <h3>Як ми можемо бути вам корисні</h3>
+    <p>
+      Передплата не потрібна — ми довіряємо нашим клієнтам і готові підтвердити свою професійність.
+      Наша служба підтримки працює 24/7 і відповість на будь-які запитання, надасть детальні консультації.
+    </p>
+  </div>
+
+  <!-- 2. Reasons -->
+  <div class="card reveal">
+    <h3>Чому звертаються до нас</h3>
+    <ul>
+      <li>Немає часу відвідувати автошколу</li>
+      <li>Втрачено документи</li>
+      <li>Проблеми зі здачею іспитів</li>
+      <li>Потрібно відкрити нові категорії</li>
+      <li>Пошкоджені права</li>
+    </ul>
+  </div>
+
+  <!-- 3. Workflow -->
+  <div class="card reveal">
+    <h3>Як ми працюємо</h3>
+    <ol>
+      <li><strong>Домовляємся по термінах</strong><br>Уточнюємо всі деталі та бережемо замовлення в роботу.</li>
+      <li><strong>Оформлюємо документи</strong><br>Вносимо вас в базу та готуємо документи.</li>
+      <li><strong>Доставляємо через Нову Пошту</strong><br>Доставка здійснюється по всій Україні.</li>
+      <li><strong>Ви оримуєте та оплачуєте</strong><br>Оплата тільки після отримання.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="reviews container">
+      <div class="reviews-header">
+  <h2>Відгуки наших клієнтів</h2></div>
+  <div class="reviews-grid cards-container">
+    <div class="review-card reveal" data-i="1">
+      <video src="review1.mp4" controls></video>
+    </div>
+    <div class="review-card reveal" data-i="2">
+      <video src="review2.mp4" controls></video>
+    </div>
+    <div class="review-card reveal" data-i="3">
+      <video src="review3.mp4" controls></video>
+    </div>
+    <div class="review-card reveal" data-i="4">
+      <video src="review4.mp4" controls></video>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Footer CTA -->
+  <section class="cta-footer container">
+    <h2>Зв'язок лише через Telegram</h2>
+    <p>Хочете сісти за кермо вже через 10-12 днів?</p>
+    <a href="https://t.me/Volodymir_tsc" class="btn btn-primary">Замовити в Telegram</a>
+    <p>Пишіть нам: @Volodymir_tsc</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer container">
+    <p>HSC-MVS Online Services © 2024 Всі права захищені.</p>
+  </footer>
+<script>
+  const headerLogo = document.querySelector('.header-logo');
+  const modal       = document.getElementById('telegramModal');
+  const closeBtn    = modal.querySelector('.modal-close');
+  const goTelegram  = document.getElementById('goTelegram');
+
+  // Открыть модалку
+  headerLogo.addEventListener('click', e => {
+    e.preventDefault();
+    modal.classList.add('active');
+  });
+
+  // Закрыть модалку
+  closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+  modal.addEventListener('click', e => {
+    if (e.target === modal) modal.classList.remove('active');
+  });
+
+  // Перейти в Telegram из модалки
+  goTelegram.addEventListener('click', () => {
+    window.open('https://t.me/Volodymir_tsc', '_blank');
+    modal.classList.remove('active');
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    document.querySelectorAll('.reveal').forEach(card => {
+      observer.observe(card);
+    });
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.reveal').forEach(card => {
+      observer.observe(card);
+    });
+  });
+</script>
+<!-- Floating Telegram Button -->
+<a
+  href="https://t.me/Volodymir_tsc"
+  target="_blank"
+  id="floating-telegram"
+  aria-label="Написати нам у Telegram"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 240 240"
+  >
+    <!-- фон круга -->
+    <circle cx="120" cy="120" r="120" fill="var(--color-primary)" />
+    <!-- иконка Telegram (упрощённая) -->
+    <path
+      d="M45.5 120.4L192.9 64.1C201.5 60.8 205.3 66.2 203.1 74.8L175.3 207.3C173.2 215.8 168 218.5 160.5 213.9L112 180.9 88.1 203.9C85.5 206.5 83.3 208.7 78.2 208.7L81.8 157.4 175 82.5C179.5 79 176.5 74.8 170.8 78.3L54.2 149.8C48.1 153.4 48.3 157.6 53.9 158.9Z"
+      fill="#fff"
+    />
+  </svg>
+</a>
+
+</body>
+</html>

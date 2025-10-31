@@ -1,0 +1,960 @@
+/* --- Variables & Reset --- */
+:root {
+  --color-primary: #004d40;
+  --color-accent: #a4e044;
+  --color-white: #ffffff;
+  --text-dark: #333333;
+  --max-width: 1200px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* --- Header --- */
+.site-header {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 1rem 0;
+}
+.site-header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.site-header .btn-telegram {
+  background: none;
+  border: 2px solid var(--color-white);
+  border-radius: 4px;
+  color: var(--color-white);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: background 0.3s;
+}
+.site-header .btn-telegram:hover {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+}
+
+/* --- Hero --- */
+.hero {
+  text-align: center;
+  padding: 4rem 0;
+}
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+}
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+.btn-primary {
+  display: inline-block;
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  transition: opacity 0.3s;
+}
+.btn-primary:hover {
+  opacity: 0.8;
+}
+
+/* --- Pricing Cards --- */
+.pricing-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 4rem 0;
+}
+.card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 2rem;
+  background: #fff;
+  text-align: left;
+}
+.card h2 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  color: var(--color-primary);
+}
+.card ul {
+  list-style: disc inside;
+}
+.card ul li {
+  margin-bottom: 0.5rem;
+}
+
+/* --- Sections: Benefits, Reasons, Workflow --- */
+.benefits,
+.reasons,
+.workflow {
+  padding: 4rem 0;
+}
+.benefits h2,
+.workflow h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+}
+.reasons h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+}
+.reasons ul {
+  list-style: disc inside;
+}
+.workflow ol {
+  counter-reset: step;
+}
+.workflow ol li {
+  margin-bottom: 1.5rem;
+}
+
+/* --- Customer Reviews --- */
+.reviews {
+  padding: 4rem 0;
+}
+.reviews h2 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--color-primary);
+}
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+.review-grid video {
+  width: 100%;
+  border-radius: 4px;
+}
+
+/* --- Footer CTA & Site Footer --- */
+.cta-footer {
+  text-align: center;
+  padding: 4rem 0;
+  background: #f9f9f9;
+}
+.cta-footer h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+}
+.site-footer {
+  text-align: center;
+  padding: 2rem 0;
+  background: #f5f5f5;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .pricing-cards {
+    grid-template-columns: 1fr;
+  }
+}
+/* контейнер под видео */
+.video-background {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  overflow: hidden;
+  z-index: -1;            /* чтобы видео было за контентом */
+}
+
+/* само видео */
+.bg-video {
+  position: absolute;
+  top: 50%; left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;      /* обрезка/растяжка, чтобы заполнить */
+}
+.header-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.site-header {
+  background: var(--color-primary, #004d40);
+  color: #fff;
+  position: relative;
+  z-index: 100;
+}
+.logo {
+  font-weight: bold;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+}
+.nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav ul li a:hover {
+  color: var(--color-accent, #a4e044);
+}
+.btn-telegram {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  background: none;
+  border: 2px solid #fff;
+  color: #fff;
+  border-radius: 5px;
+  padding: 0.45em 1em;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background .2s, color .2s;
+}
+.btn-telegram:hover {
+  background: #fff;
+  color: var(--color-primary, #004d40);
+}
+.burger {
+  background: none;
+  border: none;
+  width: 2.2em;
+  height: 2.2em;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.28em;
+  z-index: 120;
+}
+.burger span {
+  display: block;
+  width: 2em;
+  height: 3px;
+  background: #fff;
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+/* Mobile nav */
+.mobile-nav {
+  display: none;
+  background: var(--color-primary, #004d40);
+  position: absolute;
+  left: 0; top: 100%;
+  width: 100%;
+  z-index: 99;
+}
+.mobile-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2em;
+}
+.mobile-nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+.mobile-nav.active {
+  display: block;
+}
+@media (max-width: 900px) {
+  .nav { display: none; }
+  .btn-telegram { display: none; }
+  .burger { display: flex; }
+}
+@media (max-width: 900px) {
+  .header-flex { gap: 0.5rem; }
+}
+.burger {
+  background: none;
+  border: none;
+  width: 2.2em;
+  height: 2.2em;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.28em;
+  z-index: 120;
+  transition: transform 0.3s cubic-bezier(.4,2,.3,1);
+}
+.burger span {
+  display: block;
+  width: 2em;
+  height: 3px;
+  background: #fff;
+  border-radius: 3px;
+  transition: 0.3s cubic-bezier(.4,2,.3,1);
+  position: relative;
+}
+
+.burger.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.burger.active span:nth-child(2) {
+  opacity: 0;
+}
+.burger.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Ефект плавного відкриття меню */
+.mobile-nav {
+  display: block;
+  background: var(--color-primary, #004d40);
+  position: absolute;
+  left: 0; top: 100%;
+  width: 100%;
+  z-index: 99;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: 
+    max-height 0.5s cubic-bezier(.33,1.36,.77,1.06),
+    opacity 0.4s,
+    transform 0.4s;
+}
+.mobile-nav.active {
+  max-height: 500px;
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+@media (max-width: 900px) {
+  .nav { display: none; }
+  .btn-telegram { display: none; }
+  .burger { display: flex; }
+}
+.mobile-nav {
+  display: block;
+  background: var(--color-primary, #004d40);
+  position: absolute;
+  left: 0; top: 100%;
+  width: 100%;
+  z-index: 99;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    max-height 0.5s cubic-bezier(.33,1.36,.77,1.06),
+    opacity 0.4s,
+    transform 0.4s;
+}
+
+.mobile-nav.active {
+  max-height: 100vh;
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobile-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 2.5em 1em 2em 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.3em;
+  min-height: 55vh;
+  justify-content: center;
+}
+
+.mobile-nav ul li {
+  width: 85%;
+  display: flex;
+  justify-content: center;
+}
+
+.mobile-nav ul li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 1.2em;
+  color: #004d40;
+  background: #fff;
+  border-radius: 1.5em;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.08);
+  font-weight: 600;
+  padding: 0.9em 0;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition:
+    color 0.2s,
+    background 0.2s,
+    box-shadow 0.2s;
+  border: 2px solid transparent;
+  outline: none;
+}
+
+.mobile-nav ul li a:hover,
+.mobile-nav ul li a:focus {
+  color: #2e7d32;
+  background: #eaffd0;
+  box-shadow: 0 4px 22px 0 #a4e04480;
+  border: 2px solid #a4e044;
+}
+
+/* Щоб меню виїжджало плавно */
+.mobile-nav {
+  transform: translateY(-10px);
+}
+.mobile-nav.active {
+  transform: translateY(0);
+}
+/* Оверлей для затемнення всього сайту */
+.menu-overlay {
+  display: none;
+  position: fixed;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.42);
+  z-index: 98;
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+.menu-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Mobile nav: full screen, центровано */
+.mobile-nav {
+  display: block;
+  background: var(--color-primary, #004d40);
+  position: fixed;
+  left: 0; top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transform: scale(1.06) translateY(-20px);
+  transition:
+    max-height 0.5s cubic-bezier(.33,1.36,.77,1.06),
+    opacity 0.4s,
+    transform 0.5s cubic-bezier(.33,1.36,.77,1.06);
+}
+.mobile-nav.active {
+  max-height: 2000px;
+  opacity: 1;
+  pointer-events: all;
+  transform: scale(1) translateY(0);
+}
+.mobile-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 1em;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.3em;
+}
+/* 1) Анімація логотипа */
+.header-logo {
+  display: inline-block;
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: bold;
+  transition: transform 0.2s ease, color 0.2s;
+}
+.header-logo:hover {
+  transform: scale(1.05);
+  color: #a4e044;
+}
+
+/* 2) Стилі для модалки */
+.modal {
+  --bg: rgba(0,0,0,0.5);
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 200;
+}
+.modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+.modal-content {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem 2rem;
+  max-width: 90%;
+  width: 320px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+  transform: translateY(-30px);
+  transition: transform 0.3s ease;
+}
+.modal.active .modal-content {
+  transform: translateY(0);
+}
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 1.1rem;
+  right: 1.1rem;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.2s;
+}
+.modal-close:hover {
+  color: #000;
+}
+
+/* 3) Уточним кнопку внутри модалки */
+#goTelegram {
+  width: 100%;
+  margin-top: 1rem;
+}
+/* 1. Оверлей — нейтральное затемнение */
+.modal {
+  background: rgba(0,0,0,0.6);
+}
+.modal.active .modal-content {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+/* 2. Контейнер модалки в деловом стиле */
+.modal-content.business {
+  background: #ffffff;
+  color: #222;
+  width: 300px;
+  max-width: 90%;
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.modal.active .modal-content.business {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* 3. Анимация появления */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* 4. Заголовок */
+.business .modal-title {
+  font-family: Arial, sans-serif;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #004d40; /* ваш корпоративный тёмно-зелёный */
+}
+
+/* 5. Описание текста */
+.business .modal-text {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+/* 6. Кнопка */
+.business .modal-button {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 0;
+  background: #a4e044;  /* лайм-зелёный */
+  color: #004d40;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.business .modal-button:hover {
+  background: #8ac33a;
+}
+
+/* 7. Крестик закрытия */
+.business .modal-close {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #777;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.business .modal-close:hover {
+  color: #000;
+}
+/* --- HERO TEXT STYLE --- */
+.hero h1 {
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #004d40;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+  text-align: center;
+  /* лёгкая тень для читаемости на видеофонe */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.hero h1:hover {
+  color: #2e7d32;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: rgba(0, 0, 0, 0.75);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.hero p:hover {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+/* Адаптация под мобильные */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+}
+/* Общий грид-контейнер карточек */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  padding: 2rem 1rem;
+}
+
+/* Glassmorphism-карточка */
+.card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.15);     /* лёгкая прозрачность */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  backdrop-filter: blur(12px);               /* размытие фона за карточкой */
+  padding: 1.5rem;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.25),
+    inset 0 0 2px rgba(255, 255, 255, 0.1);
+  transition:
+    transform 0.5s ease,
+    box-shadow 0.3s ease;
+  cursor: default;
+}
+
+/* Появление при скролле (если нужно) */
+.card {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover-микровзаимодействие */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.3),
+    inset 0 0 4px rgba(255, 255, 255, 0.15);
+}
+
+/* Заголовок внутри карточки */
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  color: #004d40;       /* ваш основной тёмно-зелёный */
+  font-weight: 600;
+}
+
+/* Список пунктов */
+.card ul {
+  list-style: none;
+  padding-left: 0;
+}
+.card ul li {
+  position: relative;
+  padding: 0.4rem 0 0.4rem 1.2rem;
+  color: #fff;          /* белый для контраста */
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+.card ul li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #a4e044;       /* лаймовый акцент */
+}
+.card ul li:hover {
+  color: #a4e044;
+}
+
+/* Подсветка линии при hover */
+.card ul li::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #a4e044;
+  transition: width 0.3s ease;
+}
+.card ul li:hover::after {
+  width: 100%;
+}
+/* Контейнер отзывов: так же, как у карточек */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Базовый стиль «стеклянной» карточки для отзывов */
+.review-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 0.5rem;
+  backdrop-filter: blur(16px);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    inset 0 0 4px rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  transform: perspective(800px) translateY(40px) scale(0.97);
+  opacity: 0;
+  transition: 
+    transform 0.7s cubic-bezier(.2,.8,.2,1),
+    opacity 0.7s ease-out;
+}
+
+/* Когда карточка «видна» в зоне просмотра */
+.review-card.show {
+  transform: perspective(800px) translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* Hover-эффект — чуть приподнимаем и подсвечиваем рамку */
+.review-card:hover {
+  transform: perspective(800px) translateY(-10px) rotateX(4deg) scale(1.02);
+  box-shadow:
+    0 16px 48px rgba(0,0,0,0.6),
+    inset 0 0 48px rgba(255,255,255,0.05);
+}
+
+/* Неоновая рамка-анимация */
+.review-card::before {
+  content: "";
+  position: absolute; top:-2px; left:-2px; right:-2px; bottom:-2px;
+  background: linear-gradient(
+    60deg, var(--neon-accent), var(--neon-light), var(--neon-accent)
+  );
+  background-size: 200% 200%;
+  filter: blur(8px);
+  opacity: 0.6;
+  z-index: -1;
+  border-radius: inherit;
+  animation: neon-border 4s linear infinite;
+}
+
+/* Видео занимает всю карточку */
+.review-card video {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Ключевые кадры для неон-анимации */
+@keyframes neon-border {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.reviews-header {
+  border: 2px solid var(--accent-light);
+  background: rgba(31, 77, 58, 0.2);  /* rgba(31,77,58,0.2) */
+  box-shadow: 0 4px 12px var(--shadow-dark);
+}
+.reviews-header:hover {
+  box-shadow: 0 8px 24px var(--shadow-dark);
+}
+.reviews-header h2 {
+  color: var(--accent-light);
+  text-shadow: 0 0 6px var(--accent-light);
+}
+:root {
+  /* вместо #a4e044 и #7fff00 */
+  --accent-dark:   #b7b6b67b;  /* темно-изумрудный */
+  --accent-light:  #ffffff;  /* мягкий зелёный */
+  --shadow-dark:   rgba(0, 0, 0, 0.6);
+}
+/* --- Стиль для CTA-блока --- */
+.cta-footer {
+  background: rgba(255, 255, 255, 0.8);       /* полупрозрачный светлый фон */
+  backdrop-filter: blur(8px);                /* лёгкое блюр-замыливание фона */
+  border-radius: 12px;                       /* скругление */
+  border: 1px solid var(--accent-dark);      /* тонкая тёмно-зелёная рамка */
+  box-shadow: 0 4px 24px var(--shadow-dark); /* глубокая тень */
+  padding: 3rem 1.5rem;                      /* внутренние отступы */
+  margin: 4rem auto;                         /* отступ сверху/снизу и центр */
+  max-width: 600px;                          /* ограничение по ширине */
+  text-align: center;
+  position: relative;
+  z-index: 50;
+}
+
+.cta-footer h2 {
+  font-size: 1.8rem;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.cta-footer p {
+  color: #444;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+/* Кнопка внутри CTA */
+.cta-footer .btn-primary {
+  background: var(--accent-light);           /* мягкий зелёный */
+  color: var(--color-primary);
+  padding: 0.75rem 1.75rem;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.cta-footer .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* --- Стиль для нижнего футера --- */
+.site-footer {
+  background: var(--color-primary);
+  color: #fff;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  border-top: 1px solid var(--accent-dark);
+}
+
+.site-footer a {
+  color: var(--accent-light);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.site-footer a:hover {
+  color: #fff;
+}
+/* ————— Плавающая кнопка Telegram ————— */
+#floating-telegram {
+  --size: 4rem;
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: var(--size);
+  height: var(--size);
+  background: var(--color-primary); /* темно-зелёный из вашей палитры */
+  border: 2px solid var(--color-accent); /* лаймовый акцент */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+  z-index: 999;
+}
+
+#floating-telegram svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+#floating-telegram:hover {
+  background: var(--color-accent);
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+#floating-telegram:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(164,224,68,0.6);
+}
